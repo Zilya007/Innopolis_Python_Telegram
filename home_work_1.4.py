@@ -3,7 +3,7 @@ print("Программа нарисует елочку из выбранног�
 flag_input = True
 while flag_input:
     symbol = input("Введите любой один символ:\n")
-    if len(symbol) == 1:
+    if len(symbol) == 1 and symbol != ' ':
         level = input("Введите высоту до 30:\n")
         if level.isnumeric() and int(level) <= 30:
             level = int(level)
