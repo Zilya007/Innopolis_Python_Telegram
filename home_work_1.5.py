@@ -5,28 +5,26 @@
 result = []
 square_sum = []
 sum_square = []
-
+print("Программа выведет разность квадратов чисел от 1 до Вашего значения!")
 while True:
-    print("Программа выведет разность квадратов чисел от 1 до Вашего значения!\n")
-    exit_flag = input('Для выхода из программы нажмите 0. Для продолжения нажмите enter\n')
+    exit_flag = input('Для выхода из программы нажмите 0 , для продолжения нажмите Enter.\n')
     if exit_flag == '0':
+        print("Завершение работы программы.")
         break
     else:
-        scope = input("Введите число до ста:\n")
+        scope = input("Введите число до 100:\n")
         if scope.isnumeric() and len(scope) <= 3 and int(scope) <= 100:
-            user_range = int(scope) + 1
+            user_number = int(scope) + 1
 
-            for i in range(1, user_range):
+            for i in range(1, user_number):
                 square_sum.append((i + i)**2)
 
-            for i in range(1, user_range):
+            for i in range(1, user_number):
                 sum_square.append(i**2 + i**2)
 
-            for i in range(0, user_range - 1):
+            for i in range(0, user_number - 1):
                 result.append(square_sum[i] - sum_square[i])
                 print('Разность квадрата суммы и суммы квадратов числа ', end='')
                 print(i + 1, result[i], sep=' = ', end='.\n')
         else:
             print(f"Ошибка ввода, введите число до 100. Вы ввели {scope}\n")
-
-        print()
