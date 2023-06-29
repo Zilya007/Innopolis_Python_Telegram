@@ -17,7 +17,7 @@ while True:
             user_range = int(scope) + 1
 
             for i in range(1, user_range):
-                square_sum.append((i+i)**2)
+                square_sum.append((i + i)**2)
 
             for i in range(1, user_range):
                 sum_square.append(i**2 + i**2)
@@ -25,7 +25,7 @@ while True:
             for i in range(0, user_range - 1):
                 result.append(square_sum[i] - sum_square[i])
                 print('Разность квадрата суммы и суммы квадратов числа ', end='')
-                print(i+1, result[i], sep=' = ', end='.\n')
+                print(i + 1, result[i], sep=' = ', end='.\n')
         else:
             print(f"Ошибка ввода, введите число до 100. Вы ввели {scope}\n")
 
