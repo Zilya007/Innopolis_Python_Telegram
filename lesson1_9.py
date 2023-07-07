@@ -1,3 +1,17 @@
+def check_win():
+    if area[0][0] == 'X' and area[0][1] == 'X' and area[0][2] == 'X':
+        print("Победили крестики")
+        return 'X'
+
+    if area[0][0] == '0' and area[0][1] == '0' and area[0][2] == '0':
+        print("Победили нолики")
+        return '0'
+
+    if step == 10:
+        print("Ничья")
+        return '_'
+
+
 round = 1
 while True:
     print(f'Раунд {round}')
@@ -35,22 +49,13 @@ while True:
                 continue
             step += 1
 
-            if area[0][0] == 'X' and area[0][1] == 'X' and area[0][2] == 'X':
-                print("Победили крестики")
-                round += 1
-                break
-
-            if area[0][0] == '0' and area[0][1] == '0' and area[0][2] == '0':
-                print("Победили нолики")
-                round += 1
-                break
-
-            if step == 10:
-                print("Ничья")
-                round += 1
+            if check_win() == 'X' or check_win() == 'X' or check_win() == '_':
+                round +=1
                 break
 
             for _ in area:
                 print(_)
     else:
         print("Неправильный выбор\n")
+
+
