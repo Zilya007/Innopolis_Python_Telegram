@@ -1,11 +1,12 @@
 # Реализация программы используя прошлый материал для нахождения результата, согласно условиям задачи
 
-collection = ['hello', 6, 6, 0, 1, 1, 2, 3, 3, 5, 8, 8, 8, ['a', ['b']], 13, 21, 34, 55, 89, 89, 89, 144, 233, 377, 610,
+collection = ['hello', 6, 6, 0, 1, 1, 1, 2, 3, 2, 3, 3, 5, 8, 8, 8, ['a', ['b']], 13, 21, 34, 55, 89, 89, 89, 144, 233,
+              377, 610,
               'hello']
 base_collection = collection.copy()
 
 
-def find_repeats(collection):
+def find_repeats():
     reps = []  # для отслеживания повторений
 
     for elem in collection:
@@ -14,7 +15,7 @@ def find_repeats(collection):
     return reps
 
 
-def del_other_types(collection):
+def del_other_types():
     deleted = []
     for elem in collection:
         if isinstance(elem, int) and elem not in deleted:
@@ -28,7 +29,7 @@ def del_other_types(collection):
     return collection
 
 
-def find_fib(collection):
+def find_fib(new_collection):
     fib = []  # для генерации ряда фиббоначи
     for i in range(len(collection)):
         if collection[i] == collection[i - 2] + collection[i - 1]:
@@ -59,6 +60,4 @@ def show_fib(fib, reps):
         print("Последовательность фиббоначи не обнаружена")
 
 
-
-del_other_types(collection)
-show_fib(find_fib(collection), find_repeats(collection))
+show_fib(find_fib(del_other_types()), find_repeats())
