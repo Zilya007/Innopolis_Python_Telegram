@@ -1,0 +1,63 @@
+variables:
+    host_fqdn: 'doc.ru'
+    home_path: ''
+    http_port: 80
+    https_port: 443
+    protocol: 'https'
+logs_path: &logs
+    LOGS_PATH: '{{ home_path }}/logs'
+    GenericService:
+        <<: *base
+        LOGS_PATH: 'C:\inetpub\logs\DrxGenericService'
+        WORKER_SERVICE_ENABLED: true
+        WORKFLOW_BLOCK_SERVICE_ENABLED: true
+        REPORT_SERVICE_ENABLED: true
+        WIDGET_SERVICE_ENABLED: true
+        AUTHENTICATION_USE_THREAD_IDENTITY: 'False'
+        LOGS_DEBUGGER:
+            '@enabled': 'false'
+        WIDGETS_ORLEANS_SILO_MONGO_GRAIN_STORAGE_DATABASE_NAME: 'sungero_widgets'
+        WIDGETS_ORLEANS_USE_DASHBOARD: 'False'
+    PreviewService:
+        <<: *base
+        LOGS_PATH: 'C:\inetpub\logs\DrxPreviewService'
+        TEMP_CONVERSION_FOLDER: 'E:\Preview\ConversionResults'
+        DOCUMENT_PROVIDER_CACHE_FOLDER: 'E:\Preview\DownloadedDocuments'
+        PREVIEW_STORAGE_HOST: 'http://localhost:6000'
+        MAX_PREVIEW_FILE_SIZE: '31457280'
+        DOCUMENT_PROVIDER_CLEANUP_INTERVAL: '00:02:00:00'
+        DOCUMENT_PROVIDER_FILE_EXPIRE_TIME: '00:02:00:00'
+        INTERNAL_LOG_FILE: 'previewservice.internal.log'
+    PreviewStorage:
+        <<: *base
+        LOGS_PATH: 'C:\inetpub\logs\DrxPreviewStorage'
+        DEFAULT_SERVICE_PORT: '6000'
+        STORAGE_PATH: 'E:\PreviewStorage'
+        CONVERT_RESULT_WAIT_MINUTES: '10'
+        CLEANUP_PREVIEW_INTERVAL: '07:00:00:00'
+        PREVIEW_EXPIRED_TIMEOUT: '07:00:00:00'
+        INTERNAL_LOG_FILE: 'previewstorage.internal.log'
+        PREVIEW_CACHE_ELEMENTS_LIMIT: '10000'
+        PREVIEW_CACHE_CLEANUP_INTERVAL: '00:00:05:00'
+        USE_CACHE_IN_MEMORY: 'True' 
+    WorkflowProcessService:
+        <<: *base
+        LOGS_PATH: 'C:\inetpub\logs\DrxWorkflowProcessService'
+    DeploymentToolUI:
+        <<: *logs
+        LOGS_PATH: '${specialfolder:LocalApplicationData}\Directum Company\DirectumRX\Utilities\Logs'
+        TENANT: 'karsar'
+        SERVER_ROOT: '{{ host_fqdn }}'
+        SERVER_HTTP_PORT: '{{ http_port }}'
+        SERVER_HTTPS_PORT: '{{ https_port }}'
+        WEB_PROTOCOL: '{{ protocol }}'
+        WEB_RELATIVE_PATH: 'DrxWeb'
+    NomadService:
+        <<: *base
+        NOMAD_HOST_PATH_BASE: 'nomad'
+        HOST_HTTP_PORT:
+        CLIENT_LOGS_PATH: '{{ home_path }}/logs/nomad/clients'
+        PERFORMANCE_LOGS: 'false'
+        REQUEST_LOGS: 'false'
+        TRACE_LOGS: 'false'
+        MAX_ARCHIVE_FILES: 30
