@@ -1,0 +1,6 @@
+host_fqdn: doc.ru
+home_path: ''
+http_port: '80'
+https_port: '443'
+protocol: https
+NOMAD_HOST_PATH_BASE: nomad
