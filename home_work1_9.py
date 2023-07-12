@@ -10,9 +10,7 @@ import os
 to_yaml = {}
 with open('homework1_9/user_file.txt', mode='r') as file:
     reader = file.read()
-reader = reader.replace(',', ' ')
-reader = reader.replace('  ', ' ')
-reader = reader.replace("'", '')
+reader = reader.replace(',', ' ').replace('  ', ' ').replace("'", '')
 reader = reader.rstrip()
 reader = reader.split(' ')
 
