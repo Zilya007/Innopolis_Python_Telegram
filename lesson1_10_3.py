@@ -35,20 +35,38 @@
 # print(a.name)
 
 
+# class Test:
+#     def __init__(self, number):
+#         self.number = number
+#
+#     def __add__(self, other):
+#         return self.number + other
+#
+#     def __radd__(self, other):
+#         return other + self.number
+#
+#     def __iadd__(self, other):
+#         return self.number + other
+#
+#
+# a = Test(5)
+# print(a + 10)
+# print(10 + a)
+
 class Test:
-    def __init__(self, number):
-        self.number = number
+    @classmethod            # обращение к методу через класс
+    def say(cls):
+        print('hello')
+    @property                     #использование без скобок
+    def say_hello(self):
+        print('hello with decorator')
 
-    def __add__(self, other):
-        return self.number + other
-
-    def __radd__(self, other):
-        return other + self.number
-
-    def __iadd__(self, other):
-        return self.number + other
+    @staticmethod                  #статический метод
+    def say_static():
+        print('static')
 
 
-a = Test(5)
-print(a + 10)
-print(10 + a)
+a = Test()
+a.say()
+Test.say()
+a.say_hello
