@@ -86,6 +86,22 @@ while True:
     match choice_phone:
         case '1':
             print(f"Вы используете телефон {phone1.maker} {phone1.model}")
+            while True:
+                print(
+                    "Выберите действие: 1 - Позвонить , 2 Ответить на звонок, 0 - выход")
+                choice = input()
+                match choice:
+                    case '1':
+                        phone1.call()
+                    case '2':
+                        phone1.answer()
+                    case '0':
+                        break
+                    case _:
+                        print("Ошибка ввода, повторите")
+
+
+
         case '2':
             print(f"Вы используете телефон {ip_phone1.maker} {ip_phone1.model}")
             while True:
