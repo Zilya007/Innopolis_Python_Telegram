@@ -52,6 +52,12 @@ class IpPhone(Phone):
             else:
                 print(number, end=', ')
 
+    def activate_poe(self):
+        if self.poe is not None:
+            print('Активирована фнкция POE')
+        else:
+            print("Данная функция не доступна")
+
 
 class ConferencePhone(IpPhone):
     conference_number = 0
@@ -71,7 +77,7 @@ class ConferencePhone(IpPhone):
 
 
 phone1 = Phone('Panasonic', 'XR24T')
-ip_phone1 = IpPhone('Yealink', 'T21P', 'poe')
+ip_phone1 = IpPhone('Yealink', 'T21P')
 conference_phone1 = ConferencePhone('Yealink', 'T54W', 'poe')
 
 while True:
@@ -84,7 +90,8 @@ while True:
             print(f"Вы используете телефон {ip_phone1.maker} {ip_phone1.model}")
             while True:
                 print(
-                    "Выберите действие: 1 - Позвонить , 2 Ответить на звонок , 3 - Показать историю звонков , 0 - выход")
+                    "Выберите действие: 1 - Позвонить , 2 Ответить на звонок , 3 - Показать историю звонков ,"
+                    "4 - активировать режим POE, 0 - выход")
                 choice = input()
                 match choice:
                     case '1':
@@ -93,6 +100,8 @@ while True:
                         ip_phone1.answer()
                     case '3':
                         ip_phone1.show_history()
+                    case '4':
+                        ip_phone1.activate_poe()
                     case '0':
                         break
                     case _:
@@ -102,7 +111,7 @@ while True:
             while True:
                 print(
                     "Выберите действие: 1 - Позвонить , 2 Ответить на звонок , 3 - Показать историю звонков , "
-                    "4- создать конференцию, 5- показать количество конференций 0 - выход")
+                    "4- создать конференцию, 5- показать количество конференций, 6 - активировать режим POE, 0 - выход")
                 choice = input()
                 match choice:
                     case '1':
@@ -115,6 +124,8 @@ while True:
                         conference_phone1._create_conference()
                     case '5':
                         conference_phone1._show_conference_number()
+                    case '6':
+                        conference_phone1.activate_poe()
                     case '0':
                         break
                     case _:
