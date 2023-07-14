@@ -35,7 +35,7 @@ class IpPhone(Phone):                           # наследование
         self.history.append(number)
 
     def answer(self):
-        self.number = random.randint(9111111111, 9999999999)
+        self.number = random.randint(89111111111, 89999999999)
         print("Ответить Да / Нет")
         choice = input()
         if choice == 'Да':
