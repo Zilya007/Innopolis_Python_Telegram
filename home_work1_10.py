@@ -22,14 +22,14 @@ class Phone:
             pass
 
 
-class IpPhone(Phone):
+class IpPhone(Phone):                           # наследование
 
     def __init__(self, maker, model, poe=None):
         super().__init__(maker, model)
         self.poe = poe
         self.history = []
 
-    def call(self):
+    def call(self):                                     # переопределение метода
         number = input("Наберите номер телефона! ")
         print(f'call to {number}')
         self.history.append(number)
@@ -52,7 +52,7 @@ class IpPhone(Phone):
             else:
                 print(number, end=', ')
 
-    def activate_poe(self):
+    def activate_poe(self):                                   #перегруженный метод
         if self.poe is not None:
             print('Активирована фнкция POE')
         else:
@@ -62,7 +62,7 @@ class IpPhone(Phone):
 class ConferencePhone(IpPhone):
     conference_number = 0
 
-    def _create_conference(self):
+    def _create_conference(self):                               # псевдочастный метод
         while True:
             members = input("Введите количество участников: ")
             if members.isnumeric() and int(members) <= 10:
