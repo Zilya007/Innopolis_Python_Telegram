@@ -12,13 +12,19 @@ def simple_numbers(a, b):
             simple.append(i)
 
     print(f'Список простых чисел диапазона {a, b}:')
-    for elem in simple:
-        if len(simple) > 6:
-            if simple.index(elem) > 0 and simple.index(elem) % 6 == 0:
-                print(elem)
-            else:
-                print(elem, end='\t')
+    # for elem in simple:
+    #     if len(simple) > 6:
+    #         if simple.index(elem) > 0 and simple.index(elem) % 6 == 0:
+    #             print(elem)
+    #         else:
+    #             print(elem, end='\t\t')
+    #     else:
+    #         print(elem, end='\t\t')
+    for i in range(1,len(simple)):
+        if i == 6 or i % 6 == 0:
+            print(simple[i],end='\n')
         else:
-            print(elem, end='\t')
+            print(simple[i],end ='\t\t')
+
     print()
     return simple
