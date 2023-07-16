@@ -1,4 +1,3 @@
-import module_simple_numbers
 from module_simple_numbers import simple_numbers
 
 while True:
