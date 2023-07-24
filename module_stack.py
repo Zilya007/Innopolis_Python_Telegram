@@ -1,16 +1,12 @@
-# Реализовать программу использующую генераторы, и обрабатывающую данные последовательно с использованием итераторов
 class Stack():
     def __init__(self):
-        self.stack = [i for i in range(1, 50) if i % 2 == 0]  # генератор
+        self.stack = []
         self.stack_pointer = 0
-
-    def __iter__(self):
-        stack_iter = iter(reversed(self.stack))
-        return stack_iter
 
     def show_stack(self):
         rev = reversed(self.stack)
         if len(self.stack) != 0:
+
             print(*rev)
         else:
             print('Стек пуст!')
@@ -37,16 +33,17 @@ class Stack():
 
 
 stack = Stack()
+stack.pop()
+stack.peek()
 stack.show_stack()
-# stack.peek()
-# stack.pop()
-# stack.show_stack()
-# stack.peek()
-# stack.push(100)
-# stack.show_stack()
-# stack.peek()
-myiter = iter(stack)
-# for x in myiter:
-#     print(x,end=' ')
-print(next(myiter))
-print(next(myiter))
+stack.push(6)
+stack.push(7)
+stack.push(8)
+stack.show_stack()
+stack.peek()
+stack.push(9)
+stack.show_stack()
+stack.peek()
+stack.pop()
+stack.show_stack()
+stack.peek()
