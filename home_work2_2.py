@@ -3,7 +3,6 @@ class Stack:
     def __init__(self):
         self.stack = [i for i in range(1, 15) if i % 2 == 0]  # создание списка с помощью генератор
         self.stack_pointer = (int(len(self.stack) - 1))
-        self.a = 1
 
     def __iter__(self):  # настраиваем экземпляры класса итерируемыми
         stack_iter = iter(reversed(self.stack))
